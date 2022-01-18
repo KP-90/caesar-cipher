@@ -2,15 +2,17 @@ def cipher(string, number)
     new_string = string.split("")
     new_string = new_string.map { |char| char.ord}
     new_string = new_string.map { |num| 
-        num = num + number
-        if (num > 90 && num < 97) || (num > 122)
-            num = num - (number * 2)
+        if (num + number > 90 && num + number< 97) || (num + number > 122)
+            num = (num + number) - 26
+        else
+            num = num + number
         end
         num = num.chr
+
     }
     return new_string.join("")
 
 end
 
-message = "Hello"
+message = "Caesar cipher"
 puts cipher(message, 5)
